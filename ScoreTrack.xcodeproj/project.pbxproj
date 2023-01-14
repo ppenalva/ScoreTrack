@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		6EA056522972F82600F39AAC /* ScoreTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056512972F82600F39AAC /* ScoreTrackApp.swift */; };
-		6EA056542972F82600F39AAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056532972F82600F39AAC /* ContentView.swift */; };
 		6EA056562972F82800F39AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA056552972F82800F39AAC /* Assets.xcassets */; };
 		6EA056592972F82800F39AAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA056582972F82800F39AAC /* Preview Assets.xcassets */; };
+		6EA056612972F8C700F39AAC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056602972F8C700F39AAC /* Theme.swift */; };
+		6EA056632972FAA000F39AAC /* MatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056622972FAA000F39AAC /* MatchInfo.swift */; };
+		6EA056652972FCA300F39AAC /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056642972FCA200F39AAC /* MatchView.swift */; };
+		6EA056672973067300F39AAC /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056662973067300F39AAC /* MatchesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6EA0564E2972F82600F39AAC /* ScoreTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA056512972F82600F39AAC /* ScoreTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTrackApp.swift; sourceTree = "<group>"; };
-		6EA056532972F82600F39AAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6EA056552972F82800F39AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EA056582972F82800F39AAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6EA056602972F8C700F39AAC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6EA056622972FAA000F39AAC /* MatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchInfo.swift; sourceTree = "<group>"; };
+		6EA056642972FCA200F39AAC /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		6EA056662973067300F39AAC /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				6EA056512972F82600F39AAC /* ScoreTrackApp.swift */,
-				6EA056532972F82600F39AAC /* ContentView.swift */,
+				6EA056662973067300F39AAC /* MatchesView.swift */,
+				6EA056642972FCA200F39AAC /* MatchView.swift */,
+				6EA0565F2972F89800F39AAC /* Models */,
 				6EA056552972F82800F39AAC /* Assets.xcassets */,
 				6EA056572972F82800F39AAC /* Preview Content */,
 			);
@@ -65,6 +73,15 @@
 				6EA056582972F82800F39AAC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6EA0565F2972F89800F39AAC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EA056602972F8C700F39AAC /* Theme.swift */,
+				6EA056622972FAA000F39AAC /* MatchInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EA056542972F82600F39AAC /* ContentView.swift in Sources */,
+				6EA056612972F8C700F39AAC /* Theme.swift in Sources */,
+				6EA056652972FCA300F39AAC /* MatchView.swift in Sources */,
+				6EA056632972FAA000F39AAC /* MatchInfo.swift in Sources */,
+				6EA056672973067300F39AAC /* MatchesView.swift in Sources */,
 				6EA056522972F82600F39AAC /* ScoreTrackApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

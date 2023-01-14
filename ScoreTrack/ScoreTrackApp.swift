@@ -11,7 +11,7 @@ import SwiftUI
 struct ScoreTrackApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MatchesView(matches: MatchInfo.sampleData)
         }
     }
 }
