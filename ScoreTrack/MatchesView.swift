@@ -13,17 +13,24 @@ struct MatchesView: View {
     var body: some View {
         List {
             ForEach(matches) { match in
-                MatchView(match: match)
-                    .listRowBackground(match.theme.mainColor)
+                NavigationLink(destination: DetailView(match: match)) {                MatchView(match: match)
+                }
+                .listRowBackground(match.theme.mainColor)
             }
-            
-            
         }
+        .navigationTitle("Matches")
+        .toolbar {
+                    Button(action: {}) {
+                        Image(systemName: "plus")
+                    }
+                }
     }
 }
 
 struct MatchesView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchesView(matches: MatchInfo.sampleData)
+        NavigationView {
+            MatchesView(matches: MatchInfo.sampleData)
+        }
     }
 }
