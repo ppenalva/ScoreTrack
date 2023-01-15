@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct DetailEditView: View {
+    
     @Binding var data: MatchInfo.Data
+    @Binding var match : MatchInfo
+    
     @State private var newPlayerName = ""
     @State private var newRoundName = ""
+    
+    @State private var isPresentingRoundDetailEditView = false
 
     var body: some View {
         Form {
@@ -50,6 +55,7 @@ struct DetailEditView: View {
                     TextField("New Round", text: $newRoundName)
                     Button(action: {
                         withAnimation {
+                            isPresentingRoundDetailEditView = true
                             let round = MatchInfo.Round(name: newRoundName, roundPlayers: [" "])
                             data.rounds.append(round)
                             newRoundName = ""
@@ -62,11 +68,25 @@ struct DetailEditView: View {
             }
             
         }
-    }
-}
-
-struct DetailEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailEditView(data: .constant(MatchInfo.sampleData[0].data))
+        .sheet(isPresented: $isPresentingRoundDetailEditView) {
+            NavigationView {
+                RoundDetailEditView (data: $data)
+                    .navigationTitle(data.name)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel") {
+                                isPresentingRoundDetailEditView = false
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") {
+                                isPresentingRoundDetailEditView = false
+                                match.update(from: data)
+                            }
+                        }
+                    }
+            }
+        }
+        
     }
 }

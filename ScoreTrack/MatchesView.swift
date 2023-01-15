@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct MatchesView: View {
+    
     @Binding var matches: [MatchInfo]
+    
     @Environment(\.scenePhase) private var scenePhase
+    
     @State private var isPresentingNewMatchView = false
     @State private var newMatchData = MatchInfo.Data()
+    
+    @State var match: MatchInfo = MatchInfo(data: MatchInfo.Data())
+    
+    
     let saveAction: ()->Void
     
     var body: some View {
@@ -30,7 +37,7 @@ struct MatchesView: View {
         }
         .sheet(isPresented: $isPresentingNewMatchView) {
             NavigationView {
-                DetailEditView(data: $newMatchData)
+                DetailEditView(data: $newMatchData, match: $match)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Dismiss") {
@@ -51,14 +58,6 @@ struct MatchesView: View {
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
-        }
-    }
-}
-
-struct MatchesView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MatchesView(matches: .constant(MatchInfo.sampleData),saveAction: {})
         }
     }
 }

@@ -43,7 +43,7 @@ extension MatchInfo {
         init(id : UUID = UUID(), name: String, roundPlayers: [String]) {
             self.id = id
             self.name = name
-            self.roundPlayers = roundPlayers.map { RoundPlayer(name: $0, score: 0.0)}
+            self.roundPlayers = [RoundPlayer (name: " ", score: 0.0)]
         }
     }
     

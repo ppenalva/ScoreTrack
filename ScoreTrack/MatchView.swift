@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MatchView: View {
+    
     let match: MatchInfo
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(match.name)

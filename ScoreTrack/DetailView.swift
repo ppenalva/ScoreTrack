@@ -9,8 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    @Binding var match: MatchInfo
+    @Binding var match:MatchInfo
     
+   
     @State private var data = MatchInfo.Data()
     @State private var isPresentingEditView = false
     
@@ -32,14 +33,17 @@ struct DetailView: View {
                     HStack {
                         Label(player.name, systemImage: "person")
                         Spacer()
-                    // total de partida por jugador
+                        // total de partida por jugador
                     }
                 }
             }
             Section(header: Text("Rounds")) {
-                ForEach(match.rounds) { round in
-                    HStack {
-                        Label(round.name, systemImage: "r.circle")
+                ForEach($match.rounds) { $round in
+                    
+                    NavigationLink(destination: RoundDetailView(round: $round)) {
+                        HStack {
+                            Label(round.name, systemImage: "r.circle")
+                        }
                     }
                 }
             }
@@ -52,7 +56,7 @@ struct DetailView: View {
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationView {
-                DetailEditView (data: $data)
+                DetailEditView (data: $data, match: $match)
                     .navigationTitle(match.name)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
@@ -68,14 +72,6 @@ struct DetailView: View {
                         }
                     }
             }
-        }
-    }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DetailView(match: .constant(MatchInfo.sampleData[0]))
         }
     }
 }

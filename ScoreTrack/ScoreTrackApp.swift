@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct ScoreTrackApp: App {
+  
     @StateObject private var store = MatchStore()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
