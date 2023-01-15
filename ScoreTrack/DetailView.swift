@@ -29,7 +29,18 @@ struct DetailView: View {
             }
             Section(header: Text("Players")) {
                 ForEach(match.players) { player in
-                    Label(player.name, systemImage: "person")
+                    HStack {
+                        Label(player.name, systemImage: "person")
+                        Spacer()
+                    // total de partida por jugador
+                    }
+                }
+            }
+            Section(header: Text("Rounds")) {
+                ForEach(match.rounds) { round in
+                    HStack {
+                        Label(round.name, systemImage: "r.circle")
+                    }
                 }
             }
         }

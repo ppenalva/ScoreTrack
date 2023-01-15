@@ -10,7 +10,8 @@ import SwiftUI
 struct DetailEditView: View {
     @Binding var data: MatchInfo.Data
     @State private var newPlayerName = ""
-    
+    @State private var newRoundName = ""
+
     var body: some View {
         Form {
             Section(header: Text("Match Info")) {
@@ -38,6 +39,28 @@ struct DetailEditView: View {
                     .disabled(newPlayerName.isEmpty)
                 }
             }
+            Section(header: Text("Rounds")) {
+                ForEach(data.rounds) { round in
+                    Text(round.name)
+                }
+                .onDelete { indices in
+                    data.rounds.remove(atOffsets: indices)
+                }
+                HStack {
+                    TextField("New Round", text: $newRoundName)
+                    Button(action: {
+                        withAnimation {
+                            let round = MatchInfo.Round(name: newRoundName, roundPlayers: [" "])
+                            data.rounds.append(round)
+                            newRoundName = ""
+                        }
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                    .disabled(newRoundName.isEmpty)
+                }
+            }
+            
         }
     }
 }
