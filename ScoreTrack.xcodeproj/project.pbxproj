@@ -15,6 +15,10 @@
 		6EA056652972FCA300F39AAC /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056642972FCA200F39AAC /* MatchView.swift */; };
 		6EA056672973067300F39AAC /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056662973067300F39AAC /* MatchesView.swift */; };
 		6EA056692973104100F39AAC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056682973104100F39AAC /* DetailView.swift */; };
+		6EA0566B29731D2A00F39AAC /* DetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0566A29731D2A00F39AAC /* DetailEditView.swift */; };
+		6EA0566D297324DD00F39AAC /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0566C297324DD00F39AAC /* ThemeView.swift */; };
+		6EA0567029732A7000F39AAC /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0566F29732A7000F39AAC /* ThemePicker.swift */; };
+		6EA056722973749B00F39AAC /* MatchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056712973749B00F39AAC /* MatchStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		6EA056642972FCA200F39AAC /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		6EA056662973067300F39AAC /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		6EA056682973104100F39AAC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		6EA0566A29731D2A00F39AAC /* DetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditView.swift; sourceTree = "<group>"; };
+		6EA0566C297324DD00F39AAC /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		6EA0566F29732A7000F39AAC /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
+		6EA056712973749B00F39AAC /* MatchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +67,12 @@
 		6EA056502972F82600F39AAC /* ScoreTrack */ = {
 			isa = PBXGroup;
 			children = (
+				6EA0566E29732A4200F39AAC /* ThemeViews */,
 				6EA056512972F82600F39AAC /* ScoreTrackApp.swift */,
 				6EA056662973067300F39AAC /* MatchesView.swift */,
 				6EA056642972FCA200F39AAC /* MatchView.swift */,
 				6EA056682973104100F39AAC /* DetailView.swift */,
+				6EA0566A29731D2A00F39AAC /* DetailEditView.swift */,
 				6EA0565F2972F89800F39AAC /* Models */,
 				6EA056552972F82800F39AAC /* Assets.xcassets */,
 				6EA056572972F82800F39AAC /* Preview Content */,
@@ -83,8 +93,18 @@
 			children = (
 				6EA056602972F8C700F39AAC /* Theme.swift */,
 				6EA056622972FAA000F39AAC /* MatchInfo.swift */,
+				6EA056712973749B00F39AAC /* MatchStore.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6EA0566E29732A4200F39AAC /* ThemeViews */ = {
+			isa = PBXGroup;
+			children = (
+				6EA0566C297324DD00F39AAC /* ThemeView.swift */,
+				6EA0566F29732A7000F39AAC /* ThemePicker.swift */,
+			);
+			path = ThemeViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA0566D297324DD00F39AAC /* ThemeView.swift in Sources */,
 				6EA056612972F8C700F39AAC /* Theme.swift in Sources */,
 				6EA056692973104100F39AAC /* DetailView.swift in Sources */,
+				6EA056722973749B00F39AAC /* MatchStore.swift in Sources */,
+				6EA0567029732A7000F39AAC /* ThemePicker.swift in Sources */,
+				6EA0566B29731D2A00F39AAC /* DetailEditView.swift in Sources */,
 				6EA056652972FCA300F39AAC /* MatchView.swift in Sources */,
 				6EA056632972FAA000F39AAC /* MatchInfo.swift in Sources */,
 				6EA056672973067300F39AAC /* MatchesView.swift in Sources */,
