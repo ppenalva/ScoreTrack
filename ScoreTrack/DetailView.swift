@@ -40,7 +40,8 @@ struct DetailView: View {
             Section(header: Text("Rounds")) {
                 ForEach($match.rounds) { $round in
                     
-                    NavigationLink(destination: RoundDetailView(round: $round)) {
+                    NavigationLink(destination: RoundDetailView(round: $round)){
+                     
                         HStack {
                             Label(round.name, systemImage: "r.circle")
                         }
@@ -73,5 +74,6 @@ struct DetailView: View {
                     }
             }
         }
+        .navigationTitle(match.name)
     }
 }

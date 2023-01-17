@@ -12,12 +12,19 @@ struct DetailEditView: View {
     @Binding var data: MatchInfo.Data
     @Binding var match : MatchInfo
     
+    
     @State private var newPlayerName = ""
     @State private var newRoundName = ""
     
+    @State private var newRoundPlayers: [RoundPlayer] = []
+    @State private var newRoundPlayer = RoundPlayer(name: "", score: 0.0)
+    @State private var newRound = Round(name: "", roundPlayers: [])
+    
+    @State private var isPresentingRoundDetailNewView = false
     @State private var isPresentingRoundDetailEditView = false
-
+    
     var body: some View {
+        
         Form {
             Section(header: Text("Match Info")) {
                 TextField("Name", text: $data.name)
@@ -45,19 +52,33 @@ struct DetailEditView: View {
                 }
             }
             Section(header: Text("Rounds")) {
-                ForEach(data.rounds) { round in
-                    Text(round.name)
+                ForEach($match.rounds) { $round in
+                    NavigationLink(destination: RoundDetailEditView(round: $round)) {
+                        Text(round.name)
+                    }
+                    
                 }
                 .onDelete { indices in
-                    data.rounds.remove(atOffsets: indices)
+                    match.rounds.remove(atOffsets: indices)
                 }
                 HStack {
                     TextField("New Round", text: $newRoundName)
                     Button(action: {
                         withAnimation {
-                            isPresentingRoundDetailEditView = true
-                            let round = MatchInfo.Round(name: newRoundName, roundPlayers: [" "])
-                            data.rounds.append(round)
+            
+                            for player in match.players {
+                                newRoundPlayer.name = player.name
+                                newRoundPlayer.score = 1.0
+            
+                                newRoundPlayers.insert ( newRoundPlayer, at: 0)
+                                
+                                newRoundPlayer = RoundPlayer(name: "", score: 0.0)
+                            }
+                            newRound.name = newRoundName
+                            newRound.roundPlayers = newRoundPlayers
+                            
+                            isPresentingRoundDetailNewView = true
+                        
                             newRoundName = ""
                         }
                     }) {
@@ -68,25 +89,25 @@ struct DetailEditView: View {
             }
             
         }
-        .sheet(isPresented: $isPresentingRoundDetailEditView) {
+        .sheet(isPresented:$isPresentingRoundDetailNewView) {
             NavigationView {
-                RoundDetailEditView (data: $data)
-                    .navigationTitle(data.name)
+                RoundDetailNewView (newRound: $newRound)
+                    .navigationTitle(newRound.name)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Cancel") {
-                                isPresentingRoundDetailEditView = false
+                                isPresentingRoundDetailNewView = false
                             }
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
-                                isPresentingRoundDetailEditView = false
+                                isPresentingRoundDetailNewView = false
+                                match.rounds.insert (newRound, at: 0)
                                 match.update(from: data)
                             }
                         }
                     }
             }
         }
-        
     }
 }

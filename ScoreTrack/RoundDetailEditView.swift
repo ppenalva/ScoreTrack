@@ -9,14 +9,14 @@ import SwiftUI
 
 struct RoundDetailEditView: View {
     
-    @Binding var data: MatchInfo.Data
+    @Binding var round: Round
     
     @State private var score: Double = 0.0
     
     var body: some View {
         List {
-            TextField("Round Name", text: $data.name)
-            ForEach(data.players) { player in
+            
+            ForEach(round.roundPlayers) { player in
                 HStack {
                     Text(player.name)
                     Spacer()
@@ -24,5 +24,6 @@ struct RoundDetailEditView: View {
                 }
             }
         }
+        .navigationTitle($round.name)
     }
 }
