@@ -55,16 +55,14 @@ struct DetailEditView: View {
             }
             Section(header: Text("Rounds")) {
                 
-                ForEach(rounds) { round in
-                    if( round.match == match.name) {
-  //                      newRoundData = dataRound
-  //                      newRoundPlayersData =
+                ForEach ($rounds) { $round1 in
+                    if( round1.match == match.name) {
                         
-  //                      NavigationLink(destination: RoundDetailEditView(dataRound: $round, dataRoundPlayer: $roundPlayers))
-  //                      {
-                        Text("\(round.name)")
-  //                      }
-                    }
+                        NavigationLink(destination: RoundDetailEditView( round: $round1, roundPlayer: $roundPlayers ))
+                        {
+                        Text(round1.name)
+                        }
+                }
                 }
                 .onDelete { indices in
                     rounds.remove(atOffsets: indices)

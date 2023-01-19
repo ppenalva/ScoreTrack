@@ -9,20 +9,20 @@ import SwiftUI
 
 struct RoundDetailNewView: View {
     
-//    @State var round: MatchInfo.Round
+    @Binding var dataRound: Round.Data
+    @Binding var dataRoundPlayer: [RoundPlayer.Data]
     
     var body: some View {
-        
-        Text("hello 3")
-//        List {
-//            ForEach($round.roundPlayers) { $roundPlayer in
-//                HStack {
-//                    Text(roundPlayer.name)
-//                    Spacer()
-//                    TextField("", value: $roundPlayer.score, format: .number)
-//                }
-//            }
-//        }
- //       .navigationTitle(newRound.name)
+        List {
+            
+            ForEach($dataRoundPlayer) { $roundPlayer in
+                HStack {
+                    Text(roundPlayer.name)
+                    Spacer()
+                    TextField("", value: $roundPlayer.score, format: .number)
+                }
+            }
+       }
+        .navigationTitle($dataRound.name)
     }
 }

@@ -9,20 +9,22 @@ import SwiftUI
 
 struct RoundDetailEditView: View {
     
-    @Binding var dataRound: Round.Data
-    @Binding var dataRoundPlayer: [RoundPlayer.Data]
+    @Binding var round: Round
+    @Binding var roundPlayer: [RoundPlayer]
     
     var body: some View {
         List {
             
-            ForEach($dataRoundPlayer) { $roundPlayer in
-                HStack {
-                    Text(roundPlayer.name)
-                    Spacer()
-                    TextField("", value: $roundPlayer.score, format: .number)
+            ForEach($roundPlayer) { $roundPlayer in
+                if( roundPlayer.round == round.name && roundPlayer.match == round.match) {
+                    HStack {
+                        Text(roundPlayer.name)
+                        Spacer()
+                        TextField("", value: $roundPlayer.score, format: .number)
+                    }
                 }
             }
        }
-        .navigationTitle($dataRound.name)
+        .navigationTitle($round.name)
     }
 }

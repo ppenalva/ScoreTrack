@@ -106,7 +106,7 @@ struct DetailView: View {
         }
         .sheet(isPresented: $isPresentingNewRound) {
             NavigationView {
-                RoundDetailEditView( dataRound: $newRoundData, dataRoundPlayer: $newRoundPlayersData)
+                RoundDetailNewView( dataRound: $newRoundData, dataRoundPlayer: $newRoundPlayersData)
                     .navigationTitle(match.name)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
