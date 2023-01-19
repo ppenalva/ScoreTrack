@@ -19,26 +19,31 @@ struct MatchesView: View {
     
     @State private var newMatchData = MatchInfo.Data()
     
-    @State var match: MatchInfo = MatchInfo(data: MatchInfo.Data())
+   @State var match: MatchInfo = MatchInfo(data: MatchInfo.Data())
     
     
     let saveAction: ()->Void
     
     var body: some View {
         List {
-            ForEach($matches) { $match in
-                NavigationLink(destination: DetailView(match: $match, rounds: $rounds, roundPlayers: $roundPlayers))
-                { MatchView(match: match)}
-                .listRowBackground(match.theme.mainColor)
+            ForEach($matches) { $match1 in
+          
+                    NavigationLink(destination: DetailView(match: $match1, rounds: $rounds, roundPlayers: $roundPlayers))
+                    { MatchView(match: $match1, rounds: $rounds)}
+                       
+                
+                    .listRowBackground(match1.theme.mainColor)
             }
+            
+            .onDelete(perform: deleteMatch)
         }
         .navigationTitle("Matches")
         .toolbar {
             Button(action: {
                 newMatchData = MatchInfo.Data()
                 isPresentingNewMatchView = true}) {
-                Image(systemName: "plus")
-            }
+                    Image(systemName: "plus")
+                }
         }
         .sheet(isPresented: $isPresentingNewMatchView) {
             NavigationView {
@@ -60,9 +65,19 @@ struct MatchesView: View {
                         }
                     }
             }
+            
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
+        }
+    }
+    func deleteMatch( at indexSet: IndexSet) {
+        for index in indexSet {
+            let item = matches[index]
+            matches.removeAll { $0.name == item.name}
+            rounds.removeAll { $0.match == item.name}
+            roundPlayers.removeAll {$0.match == item.name}
+            
         }
     }
 }

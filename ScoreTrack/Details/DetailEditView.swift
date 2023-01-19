@@ -30,6 +30,8 @@ struct DetailEditView: View {
         List {
             Section(header: Text("Match Info")) {
                 TextField("Name", text: $dataMatch.name)
+                    .disabled(rounds.filter {round in round.match == match.name
+                    }.count != 0)
                 ThemePicker(selection: $dataMatch.theme)
             }
             Section(header: Text("Players")) {
@@ -64,10 +66,16 @@ struct DetailEditView: View {
                         }
                 }
                 }
-                .onDelete { indices in
-                    rounds.remove(atOffsets: indices)
-                }
+                .onDelete(perform: deleteRound)
+               }
             }
         }
+        func deleteRound( at indexSet: IndexSet) {
+            for index in indexSet {
+                let item = rounds[index]
+                rounds.removeAll { $0.name == item.name}
+                roundPlayers.removeAll {$0.round == item.name}
+                
+            }
    }
 }

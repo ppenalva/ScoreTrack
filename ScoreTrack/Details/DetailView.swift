@@ -98,6 +98,7 @@ struct DetailView: View {
                 }
             }
         }
+        .navigationTitle(match.name)
         .toolbar {
             Button("Edit") {
                 isPresentingEditView = true

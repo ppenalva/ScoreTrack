@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MatchView: View {
     
-    let match: MatchInfo
+    @Binding var match: MatchInfo
+    @Binding var rounds: [Round]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,19 +21,12 @@ struct MatchView: View {
                 Label("\(match.players.count)", systemImage: "person.3")
                     .padding(.trailing, 20)
                 Spacer()
+                Label("\(rounds.filter {( $0.match == match.name)}.count)", systemImage: "r.circle")
+                    
             }
             .font(.caption)
         }
         .padding()
         .foregroundColor(match.theme.accentColor)
-    }
-}
-
-struct MatchView_Previews: PreviewProvider {
-    static var match = MatchInfo.sampleData[0]
-    static var previews: some View {
-        MatchView(match: match)
-            .background(match.theme.mainColor)
-            .previewLayout(.fixed(width: 400, height: 60))
     }
 }
