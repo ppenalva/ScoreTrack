@@ -12,7 +12,7 @@ struct MatchInfo: Identifiable, Codable {
     var name: String
     var players: [Player]
     var theme: Theme
-    var rounds: [Round] = []
+    
     
     init(id: UUID = UUID(), name: String, players: [String], theme: Theme) {
         self.id = id
@@ -34,13 +34,13 @@ extension MatchInfo {
         }
     }
     
-
-
+    
+    
     
     struct Data {
         var name: String = ""
         var players: [Player] = []
-//        var rounds: [Round] = []
+        var rounds: [Round] = []
         var theme: Theme = .seafoam
     }
     
@@ -51,7 +51,6 @@ extension MatchInfo {
     mutating func update(from data: Data) {
         name = data.name
         players = data.players
-//        rounds = data.rounds
         theme = data.theme
     }
     
@@ -59,7 +58,6 @@ extension MatchInfo {
         id = UUID()
         name = data.name
         players = data.players
-//        rounds = data.rounds
         theme = data.theme
     }
 }
@@ -67,14 +65,11 @@ extension MatchInfo {
 extension MatchInfo {
     static let sampleData: [MatchInfo] =
     [
-        MatchInfo( name:
-                    "Partida 1",
-                   players: [
-                    "Pablo",
-                    "Rafael",
-                    "Alberto"
-                   ],
-                   theme: .yellow)
-                 
+        MatchInfo( name:"Partida 1",
+                   players:["Pablo","Rafael","Alberto"],
+                   theme: .yellow),
+        MatchInfo( name:"Partida 2",
+                   players:["Juan","Jose"],
+                   theme: .orange)
     ]
 }

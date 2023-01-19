@@ -11,6 +11,9 @@
 		6E0E138D2974219C00A3622E /* RoundDetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E138C2974219C00A3622E /* RoundDetailEditView.swift */; };
 		6E0E138F297572E200A3622E /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E138E297572E200A3622E /* Round.swift */; };
 		6E0E13912975F4BF00A3622E /* RoundDetailNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E13902975F4BF00A3622E /* RoundDetailNewView.swift */; };
+		6E0E139629783EC500A3622E /* RoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E139529783EC500A3622E /* RoundPlayer.swift */; };
+		6E0E13982978471500A3622E /* RoundStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E13972978471500A3622E /* RoundStore.swift */; };
+		6E0E139A2978472500A3622E /* RoundPlayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E13992978472500A3622E /* RoundPlayerStore.swift */; };
 		6EA056522972F82600F39AAC /* ScoreTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA056512972F82600F39AAC /* ScoreTrackApp.swift */; };
 		6EA056562972F82800F39AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA056552972F82800F39AAC /* Assets.xcassets */; };
 		6EA056592972F82800F39AAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA056582972F82800F39AAC /* Preview Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		6E0E138C2974219C00A3622E /* RoundDetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDetailEditView.swift; sourceTree = "<group>"; };
 		6E0E138E297572E200A3622E /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		6E0E13902975F4BF00A3622E /* RoundDetailNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDetailNewView.swift; sourceTree = "<group>"; };
+		6E0E139529783EC500A3622E /* RoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPlayer.swift; sourceTree = "<group>"; };
+		6E0E13972978471500A3622E /* RoundStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStore.swift; sourceTree = "<group>"; };
+		6E0E13992978472500A3622E /* RoundPlayerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPlayerStore.swift; sourceTree = "<group>"; };
 		6EA0564E2972F82600F39AAC /* ScoreTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA056512972F82600F39AAC /* ScoreTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTrackApp.swift; sourceTree = "<group>"; };
 		6EA056552972F82800F39AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +62,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E0E139229768DCE00A3622E /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				6EA056662973067300F39AAC /* MatchesView.swift */,
+				6EA056642972FCA200F39AAC /* MatchView.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		6E0E139329768DF400A3622E /* Rounds */ = {
+			isa = PBXGroup;
+			children = (
+				6E0E138A2974218600A3622E /* RoundDetailView.swift */,
+				6E0E13902975F4BF00A3622E /* RoundDetailNewView.swift */,
+				6E0E138C2974219C00A3622E /* RoundDetailEditView.swift */,
+			);
+			path = Rounds;
+			sourceTree = "<group>";
+		};
+		6E0E139429768E0400A3622E /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				6EA056682973104100F39AAC /* DetailView.swift */,
+				6EA0566A29731D2A00F39AAC /* DetailEditView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		6EA056452972F82600F39AAC = {
 			isa = PBXGroup;
 			children = (
@@ -75,15 +109,11 @@
 		6EA056502972F82600F39AAC /* ScoreTrack */ = {
 			isa = PBXGroup;
 			children = (
-				6EA0566E29732A4200F39AAC /* ThemeViews */,
 				6EA056512972F82600F39AAC /* ScoreTrackApp.swift */,
-				6EA056662973067300F39AAC /* MatchesView.swift */,
-				6EA056642972FCA200F39AAC /* MatchView.swift */,
-				6EA056682973104100F39AAC /* DetailView.swift */,
-				6EA0566A29731D2A00F39AAC /* DetailEditView.swift */,
-				6E0E138A2974218600A3622E /* RoundDetailView.swift */,
-				6E0E13902975F4BF00A3622E /* RoundDetailNewView.swift */,
-				6E0E138C2974219C00A3622E /* RoundDetailEditView.swift */,
+				6E0E139229768DCE00A3622E /* Matches */,
+				6E0E139429768E0400A3622E /* Details */,
+				6E0E139329768DF400A3622E /* Rounds */,
+				6EA0566E29732A4200F39AAC /* ThemeViews */,
 				6EA0565F2972F89800F39AAC /* Models */,
 				6EA056552972F82800F39AAC /* Assets.xcassets */,
 				6EA056572972F82800F39AAC /* Preview Content */,
@@ -104,8 +134,11 @@
 			children = (
 				6EA056602972F8C700F39AAC /* Theme.swift */,
 				6EA056622972FAA000F39AAC /* MatchInfo.swift */,
-				6E0E138E297572E200A3622E /* Round.swift */,
 				6EA056712973749B00F39AAC /* MatchStore.swift */,
+				6E0E138E297572E200A3622E /* Round.swift */,
+				6E0E13972978471500A3622E /* RoundStore.swift */,
+				6E0E139529783EC500A3622E /* RoundPlayer.swift */,
+				6E0E13992978472500A3622E /* RoundPlayerStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,9 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0E13982978471500A3622E /* RoundStore.swift in Sources */,
+				6E0E139A2978472500A3622E /* RoundPlayerStore.swift in Sources */,
 				6EA0566D297324DD00F39AAC /* ThemeView.swift in Sources */,
 				6EA056612972F8C700F39AAC /* Theme.swift in Sources */,
 				6EA056692973104100F39AAC /* DetailView.swift in Sources */,
+				6E0E139629783EC500A3622E /* RoundPlayer.swift in Sources */,
 				6E0E13912975F4BF00A3622E /* RoundDetailNewView.swift in Sources */,
 				6EA056722973749B00F39AAC /* MatchStore.swift in Sources */,
 				6E0E138D2974219C00A3622E /* RoundDetailEditView.swift in Sources */,

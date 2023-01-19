@@ -10,10 +10,13 @@ import SwiftUI
 struct MatchesView: View {
     
     @Binding var matches: [MatchInfo]
+    @Binding var rounds: [Round]
+    @Binding var roundPlayers: [RoundPlayer]
     
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var isPresentingNewMatchView = false
+    
     @State private var newMatchData = MatchInfo.Data()
     
     @State var match: MatchInfo = MatchInfo(data: MatchInfo.Data())
@@ -24,20 +27,22 @@ struct MatchesView: View {
     var body: some View {
         List {
             ForEach($matches) { $match in
-                NavigationLink(destination: DetailView(match: $match)) {                MatchView(match: match)
-                }
+                NavigationLink(destination: DetailView(match: $match, rounds: $rounds, roundPlayers: $roundPlayers))
+                { MatchView(match: match)}
                 .listRowBackground(match.theme.mainColor)
             }
         }
         .navigationTitle("Matches")
         .toolbar {
-            Button(action: {isPresentingNewMatchView = true}) {
+            Button(action: {
+                newMatchData = MatchInfo.Data()
+                isPresentingNewMatchView = true}) {
                 Image(systemName: "plus")
             }
         }
         .sheet(isPresented: $isPresentingNewMatchView) {
             NavigationView {
-                DetailEditView(data: $newMatchData, match: $match)
+                DetailEditView( dataMatch: $newMatchData, rounds: $rounds, roundPlayers: $roundPlayers, match: $match)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Dismiss") {

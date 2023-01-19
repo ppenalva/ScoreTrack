@@ -1,24 +1,24 @@
 //
-//  MatchStore.swift
+//  RoundStore.swift
 //  ScoreTrack
 //
-//  Created by Pablo Penalva on 15/1/23.
+//  Created by Pablo Penalva on 18/1/23.
 //
 
 import Foundation
 import SwiftUI
 
-class MatchStore: ObservableObject {
-    @Published var matches: [MatchInfo] = []
+class RoundStore: ObservableObject {
+    @Published var rounds: [Round] = []
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("matches.data")
+        .appendingPathComponent("rounds.data")
     }
-    static func load(completion: @escaping (Result<[MatchInfo], Error>)->Void) {
+    static func load(completion: @escaping (Result<[Round], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let fileURL = try fileURL()
@@ -28,9 +28,9 @@ class MatchStore: ObservableObject {
                     }
                     return
                 }
-                let matches = try JSONDecoder().decode([MatchInfo].self, from: file.availableData)
+                let rounds = try JSONDecoder().decode([Round].self, from: file.availableData)
                 DispatchQueue.main.async {
-                    completion(.success(matches))
+                    completion(.success(rounds))
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -39,14 +39,14 @@ class MatchStore: ObservableObject {
             }
         }
     }
-    static func save(matches: [MatchInfo], completion: @escaping (Result<Int, Error>)->Void) {
+    static func save(rounds: [Round], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
-                let data = try JSONEncoder().encode(matches)
+                let data = try JSONEncoder().encode(rounds)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
                 DispatchQueue.main.async {
-                    completion(.success(matches.count))
+                    completion(.success(rounds.count))
                 }
             } catch {
                 DispatchQueue.main.async {

@@ -10,13 +10,25 @@ import SwiftUI
 @main
 struct ScoreTrackApp: App {
   
-    @StateObject private var store = MatchStore()
+    @StateObject private var storeMatch = MatchStore()
+    @StateObject private var storeRound = RoundStore()
+    @StateObject private var storeRoundPlayer = RoundPlayerStore()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                MatchesView(matches: $store.matches) {
-                    MatchStore.save(matches: store.matches) { result in
+                MatchesView(matches: $storeMatch.matches, rounds: $storeRound.rounds, roundPlayers: $storeRoundPlayer.roundPlayers) {
+                    MatchStore.save(matches: storeMatch.matches) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
+                    }
+                    RoundStore.save(rounds: storeRound.rounds) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
+                    }
+                    RoundPlayerStore.save(roundPlayers: storeRoundPlayer.roundPlayers) { result in
                         if case .failure(let error) = result {
                             fatalError(error.localizedDescription)
                         }
@@ -29,7 +41,23 @@ struct ScoreTrackApp: App {
                     case .failure(let error):
                         fatalError(error.localizedDescription)
                     case .success(let matches):
-                        store.matches = matches
+                        storeMatch.matches = matches
+                    }
+                }
+                RoundStore.load { result in
+                    switch result {
+                    case .failure(let error):
+                        fatalError(error.localizedDescription)
+                    case .success(let rounds):
+                        storeRound.rounds = rounds
+                    }
+                }
+                RoundPlayerStore.load { result in
+                    switch result {
+                    case .failure(let error):
+                        fatalError(error.localizedDescription)
+                    case .success(let roundPlayers):
+                        storeRoundPlayer.roundPlayers = roundPlayers
                     }
                 }
             }

@@ -11,12 +11,14 @@ struct ThemeView: View {
     let theme: Theme
     
     var body: some View {
+        
         ZStack {
             RoundedRectangle(cornerRadius: 4)
                 .fill(theme.mainColor)
-            Label(theme.name, systemImage: "paintpalette")
+            Text(theme.name)
                 .padding(4)
-        }
+                            }
+        .background(theme.mainColor)
         .foregroundColor(theme.accentColor)
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -24,6 +26,6 @@ struct ThemeView: View {
 
 struct ThemeView_Previews: PreviewProvider {
     static var previews: some View {
-        ThemeView(theme: .buttercup)
+        ThemeView(theme: .indigo)
     }
 }
