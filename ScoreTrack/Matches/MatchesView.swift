@@ -27,7 +27,6 @@ struct MatchesView: View {
     var body: some View {
         List {
             ForEach($matches) { $match1 in
-          
                     NavigationLink(destination: DetailView(match: $match1, rounds: $rounds, roundPlayers: $roundPlayers))
                     { MatchView(match: $match1, rounds: $rounds)}
                        

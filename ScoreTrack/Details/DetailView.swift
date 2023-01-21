@@ -44,22 +44,11 @@ struct DetailView: View {
             Section(header: Text(" Match Info")) {
                 HStack {
                     Label("Theme", systemImage: "paintpalette")
-                    Spacer()
                     Text(match.theme.name)
                         .padding(4)
                         .foregroundColor(match.theme.accentColor)
                         .background(match.theme.mainColor)
                         .cornerRadius(4)
-                }
-            }
-            Section(header: Text("Players")) {
-                ForEach(match.players) { player in
-                    HStack {
-                        Label(player.name, systemImage: "person")
-                        Spacer()
-                        let total1 = calculatePlayerScore(player: player.name)
-                        Text(String(format: "%.2f",total1))
-                    }
                 }
             }
             Button("New Round") {
@@ -88,6 +77,18 @@ struct DetailView: View {
                 
                 isPresentingNewRound = true
             }
+            
+            Section(header: Text("Players")) {
+                ForEach(match.players) { player in
+                    HStack {
+                        Label(player.name, systemImage: "person")
+                        Spacer()
+                        let total1 = calculatePlayerScore(player: player.name)
+                        Text(String(format: "%.2f",total1))
+                    }
+                }
+            }
+  
             Section(header: Text("Rounds")) {
                 ForEach($rounds) { $round in
                     if( round.match == match.name) {
